@@ -26,6 +26,9 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import Image from "next/image";
+import Link from "next/link";
+import { DarkToggle } from "@/app/components/layout/darkToggle";
 
 interface MenuItem {
   title: string;
@@ -35,7 +38,7 @@ interface MenuItem {
   items?: MenuItem[];
 }
 
-interface Navbar1Props {
+interface NavbarProps {
   className?: string;
   logo?: {
     url: string;
@@ -59,25 +62,25 @@ interface Navbar1Props {
 
 const Navbar = ({
   logo = {
-    url: "/",
+    url: "https://www.shadcnblocks.com",
     src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcnblockscom-icon.svg",
     alt: "logo",
-    title: "Shadcn Blocks",
+    title: "Blog Site",
   },
   menu = [
-    { title: "Home", url: "#" },
+    { title: "Home", url: "/" },
     // {
     //   title: "Products",
     //   url: "#",
     //   items: [
     //     {
-    //       title: "Blog",
+    //       title: "Home",
     //       description: "The latest industry news, updates, and info",
     //       icon: <Book className="size-5 shrink-0" />,
     //       url: "#",
     //     },
     //     {
-    //       title: "Company",
+    //       title: "Blogs",
     //       description: "Our mission is to innovate and empower the world",
     //       icon: <Trees className="size-5 shrink-0" />,
     //       url: "#",
@@ -128,12 +131,12 @@ const Navbar = ({
     //   ],
     // },
     {
-      title: "About",
-      url: "/about",
-    },
-    {
       title: "Blogs",
       url: "/blogs",
+    },
+    {
+      title: "About",
+      url: "/about",
     },
     {
       title: "Dashboard",
@@ -145,7 +148,7 @@ const Navbar = ({
     signup: { title: "Sign up", url: "/signup" },
   },
   className,
-}: Navbar1Props) => {
+}: NavbarProps) => {
   return (
     <section className={cn("py-4", className)}>
       <div className="container max-w-7xl mx-auto">
@@ -153,16 +156,18 @@ const Navbar = ({
         <nav className="hidden items-center justify-between lg:flex">
           <div className="flex items-center gap-6">
             {/* Logo */}
-            <a href={logo.url} className="flex items-center gap-2">
-              <img
+            <Link href={logo.url} className="flex items-center gap-2">
+              <Image
                 src={logo.src}
+                width={100}
+                height={100}
                 className="max-h-8 dark:invert"
                 alt={logo.alt}
               />
               <span className="text-lg font-semibold tracking-tighter">
                 {logo.title}
               </span>
-            </a>
+            </Link>
             <div className="flex items-center">
               <NavigationMenu>
                 <NavigationMenuList>
@@ -171,12 +176,16 @@ const Navbar = ({
               </NavigationMenu>
             </div>
           </div>
-          <div className="flex gap-2">
+
+          <div className="flex gap-2  ">
+            <div>
+              <DarkToggle />
+            </div>
             <Button asChild variant="outline" size="sm">
-              <a href={auth.login.url}>{auth.login.title}</a>
+              <Link href={auth.login.url}>{auth.login.title}</Link>
             </Button>
             <Button asChild size="sm">
-              <a href={auth.signup.url}>{auth.signup.title}</a>
+              <Link href={auth.signup.url}>{auth.signup.title}</Link>
             </Button>
           </div>
         </nav>
@@ -185,13 +194,16 @@ const Navbar = ({
         <div className="block lg:hidden">
           <div className="flex items-center justify-between">
             {/* Logo */}
-            <a href={logo.url} className="flex items-center gap-2">
-              <img
+            <Link href={logo.url} className="flex items-center gap-2">
+              <Image
                 src={logo.src}
+                priority
+                width={100}
+                height={100}
                 className="max-h-8 dark:invert"
                 alt={logo.alt}
               />
-            </a>  
+            </Link>
             <Sheet>
               <SheetTrigger asChild>
                 <Button variant="outline" size="icon">
@@ -201,13 +213,15 @@ const Navbar = ({
               <SheetContent className="overflow-y-auto">
                 <SheetHeader>
                   <SheetTitle>
-                    <a href={logo.url} className="flex items-center gap-2">
-                      <img
+                    <Link href={logo.url} className="flex items-center gap-2">
+                      <Image
                         src={logo.src}
+                        width={100}
+                        height={100}
                         className="max-h-8 dark:invert"
                         alt={logo.alt}
                       />
-                    </a>
+                    </Link>
                   </SheetTitle>
                 </SheetHeader>
                 <div className="flex flex-col gap-6 p-4">
@@ -218,13 +232,15 @@ const Navbar = ({
                   >
                     {menu.map((item) => renderMobileMenuItem(item))}
                   </Accordion>
-
+                  <div>
+                    <DarkToggle />
+                  </div>
                   <div className="flex flex-col gap-3">
                     <Button asChild variant="outline">
-                      <a href={auth.login.url}>{auth.login.title}</a>
+                      <Link href={auth.login.url}>{auth.login.title}</Link>
                     </Button>
                     <Button asChild>
-                      <a href={auth.signup.url}>{auth.signup.title}</a>
+                      <Link href={auth.signup.url}>{auth.signup.title}</Link>
                     </Button>
                   </div>
                 </div>
