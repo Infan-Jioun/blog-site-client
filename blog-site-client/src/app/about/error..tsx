@@ -5,7 +5,7 @@ export default function AboutErrorPage({
     error, reset
 }: {
     error: Error & {
-        digest: string
+        digest?: string
     },
     reset: () => void
 }) {
