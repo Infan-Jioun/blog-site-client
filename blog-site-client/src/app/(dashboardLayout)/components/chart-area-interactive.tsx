@@ -11,24 +11,24 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
+} from "@/app/(dashboardLayout)/components/ui/card"
 import {
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
   type ChartConfig,
-} from "@/components/ui/chart"
+} from "@/app/(dashboardLayout)/components/ui/chart"
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select"
+} from "@/app/(dashboardLayout)/components/ui/select"
 import {
   ToggleGroup,
   ToggleGroupItem,
-} from "@/components/ui/toggle-group"
+} from "@/app/(dashboardLayout)/components/ui/toggle-group"
 
 export const description = "An interactive area chart"
 

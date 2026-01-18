@@ -9,8 +9,8 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion";
-import { Button } from "@/components/ui/button";
+} from "@/app/(dashboardLayout)/components/ui/accordion";
+import { Button } from "@/app/(dashboardLayout)/components/ui/button";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -18,17 +18,18 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-} from "@/components/ui/navigation-menu";
+} from "@/app/(dashboardLayout)/components/ui/navigation-menu";
 import {
   Sheet,
   SheetContent,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from "@/components/ui/sheet";
+} from "@/app/(dashboardLayout)/components/ui/sheet";
 import Image from "next/image";
 import Link from "next/link";
 import { DarkToggle } from "@/app/components/layout/darkToggle";
+
 
 interface MenuItem {
   title: string;
@@ -61,8 +62,9 @@ interface NavbarProps {
 }
 
 const Navbar = ({
+
   logo = {
-    url: "https://www.shadcnblocks.com",
+    url: "/",
     src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcnblockscom-icon.svg",
     alt: "logo",
     title: "Blog Site",
@@ -133,10 +135,15 @@ const Navbar = ({
     {
       title: "Blogs",
       url: "/blogs",
+
     },
     {
       title: "About",
       url: "/about",
+    },
+    {
+      title: "Dashboard",
+      url: "/dashboard",
     },
   ],
   auth = {
@@ -145,6 +152,7 @@ const Navbar = ({
   },
   className,
 }: NavbarProps) => {
+
   return (
     <section className={cn("py-4", className)}>
       <div className="container max-w-7xl mx-auto">
