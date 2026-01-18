@@ -151,7 +151,7 @@ const Navbar = ({
 }: NavbarProps) => {
   return (
     <section className={cn("py-4", className)}>
-      <div className="container max-w-7xl mx-auto">
+      <div className="container px-6">
         {/* Desktop Menu */}
         <nav className="hidden items-center justify-between lg:flex">
           <div className="flex items-center gap-6">
@@ -159,8 +159,8 @@ const Navbar = ({
             <Link href={logo.url} className="flex items-center gap-2">
               <Image
                 src={logo.src}
-                width={100}
-                height={100}
+                width={50}
+                height={50}
                 className="max-h-8 dark:invert"
                 alt={logo.alt}
               />
