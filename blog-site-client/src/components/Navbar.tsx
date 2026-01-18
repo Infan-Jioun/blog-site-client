@@ -28,6 +28,7 @@ import {
 } from "@/components/ui/sheet";
 import Image from "next/image";
 import Link from "next/link";
+import { DarkToggle } from "@/app/components/layout/darkToggle";
 
 interface MenuItem {
   title: string;
@@ -171,7 +172,11 @@ const Navbar = ({
               </NavigationMenu>
             </div>
           </div>
-          <div className="flex gap-2">
+
+          <div className="flex gap-2  ">
+            <div>
+              <DarkToggle />
+            </div>
             <Button asChild variant="outline" size="sm">
               <Link href={auth.login.url}>{auth.login.title}</Link>
             </Button>
@@ -223,7 +228,9 @@ const Navbar = ({
                   >
                     {menu.map((item) => renderMobileMenuItem(item))}
                   </Accordion>
-
+                  <div>
+                    <DarkToggle />
+                  </div>
                   <div className="flex flex-col gap-3">
                     <Button asChild variant="outline">
                       <Link href={auth.login.url}>{auth.login.title}</Link>
