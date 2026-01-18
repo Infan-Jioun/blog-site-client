@@ -5,3 +5,4 @@ export default function Analytics() {
         <div>Analytics</div>
     )
 }
+    
