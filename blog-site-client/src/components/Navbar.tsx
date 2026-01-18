@@ -9,8 +9,8 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/app/(dashboardLayout)/components/ui/accordion";
-import { Button } from "@/app/(dashboardLayout)/components/ui/button";
+} from "@/components/ui/accordion";
+import { Button } from "@/components/ui/button";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -18,18 +18,14 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-} from "@/app/(dashboardLayout)/components/ui/navigation-menu";
+} from "@/components/ui/navigation-menu";
 import {
   Sheet,
   SheetContent,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from "@/app/(dashboardLayout)/components/ui/sheet";
-import Image from "next/image";
-import Link from "next/link";
-import { DarkToggle } from "@/app/components/layout/darkToggle";
-
+} from "@/components/ui/sheet";
 
 interface MenuItem {
   title: string;
@@ -39,7 +35,7 @@ interface MenuItem {
   items?: MenuItem[];
 }
 
-interface NavbarProps {
+interface Navbar1Props {
   className?: string;
   logo?: {
     url: string;
@@ -62,27 +58,26 @@ interface NavbarProps {
 }
 
 const Navbar = ({
-
   logo = {
     url: "/",
     src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcnblockscom-icon.svg",
     alt: "logo",
-    title: "Blog Site",
+    title: "Shadcn Blocks",
   },
   menu = [
-    { title: "Home", url: "/" },
+    { title: "Home", url: "#" },
     // {
     //   title: "Products",
     //   url: "#",
     //   items: [
     //     {
-    //       title: "Home",
+    //       title: "Blog",
     //       description: "The latest industry news, updates, and info",
     //       icon: <Book className="size-5 shrink-0" />,
     //       url: "#",
     //     },
     //     {
-    //       title: "Blogs",
+    //       title: "Company",
     //       description: "Our mission is to innovate and empower the world",
     //       icon: <Trees className="size-5 shrink-0" />,
     //       url: "#",
@@ -133,13 +128,12 @@ const Navbar = ({
     //   ],
     // },
     {
-      title: "Blogs",
-      url: "/blogs",
-
-    },
-    {
       title: "About",
       url: "/about",
+    },
+    {
+      title: "Blogs",
+      url: "/blogs",
     },
     {
       title: "Dashboard",
@@ -151,8 +145,7 @@ const Navbar = ({
     signup: { title: "Sign up", url: "/signup" },
   },
   className,
-}: NavbarProps) => {
-
+}: Navbar1Props) => {
   return (
     <section className={cn("py-4", className)}>
       <div className="container max-w-7xl mx-auto">
@@ -160,18 +153,16 @@ const Navbar = ({
         <nav className="hidden items-center justify-between lg:flex">
           <div className="flex items-center gap-6">
             {/* Logo */}
-            <Link href={logo.url} className="flex items-center gap-2">
-              <Image
+            <a href={logo.url} className="flex items-center gap-2">
+              <img
                 src={logo.src}
-                width={100}
-                height={100}
                 className="max-h-8 dark:invert"
                 alt={logo.alt}
               />
               <span className="text-lg font-semibold tracking-tighter">
                 {logo.title}
               </span>
-            </Link>
+            </a>
             <div className="flex items-center">
               <NavigationMenu>
                 <NavigationMenuList>
@@ -180,16 +171,12 @@ const Navbar = ({
               </NavigationMenu>
             </div>
           </div>
-
-          <div className="flex gap-2  ">
-            <div>
-              <DarkToggle />
-            </div>
+          <div className="flex gap-2">
             <Button asChild variant="outline" size="sm">
-              <Link href={auth.login.url}>{auth.login.title}</Link>
+              <a href={auth.login.url}>{auth.login.title}</a>
             </Button>
             <Button asChild size="sm">
-              <Link href={auth.signup.url}>{auth.signup.title}</Link>
+              <a href={auth.signup.url}>{auth.signup.title}</a>
             </Button>
           </div>
         </nav>
@@ -198,16 +185,13 @@ const Navbar = ({
         <div className="block lg:hidden">
           <div className="flex items-center justify-between">
             {/* Logo */}
-            <Link href={logo.url} className="flex items-center gap-2">
-              <Image
+            <a href={logo.url} className="flex items-center gap-2">
+              <img
                 src={logo.src}
-                priority
-                width={100}
-                height={100}
                 className="max-h-8 dark:invert"
                 alt={logo.alt}
               />
-            </Link>
+            </a>  
             <Sheet>
               <SheetTrigger asChild>
                 <Button variant="outline" size="icon">
@@ -217,15 +201,13 @@ const Navbar = ({
               <SheetContent className="overflow-y-auto">
                 <SheetHeader>
                   <SheetTitle>
-                    <Link href={logo.url} className="flex items-center gap-2">
-                      <Image
+                    <a href={logo.url} className="flex items-center gap-2">
+                      <img
                         src={logo.src}
-                        width={100}
-                        height={100}
                         className="max-h-8 dark:invert"
                         alt={logo.alt}
                       />
-                    </Link>
+                    </a>
                   </SheetTitle>
                 </SheetHeader>
                 <div className="flex flex-col gap-6 p-4">
@@ -236,15 +218,13 @@ const Navbar = ({
                   >
                     {menu.map((item) => renderMobileMenuItem(item))}
                   </Accordion>
-                  <div>
-                    <DarkToggle />
-                  </div>
+
                   <div className="flex flex-col gap-3">
                     <Button asChild variant="outline">
-                      <Link href={auth.login.url}>{auth.login.title}</Link>
+                      <a href={auth.login.url}>{auth.login.title}</a>
                     </Button>
                     <Button asChild>
-                      <Link href={auth.signup.url}>{auth.signup.title}</Link>
+                      <a href={auth.signup.url}>{auth.signup.title}</a>
                     </Button>
                   </div>
                 </div>
