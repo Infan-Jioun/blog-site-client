@@ -1,4 +1,3 @@
-
 "use client"
 
 import * as React from "react"
@@ -10,3 +9,4 @@ export function ThemeProvider({
 }: React.ComponentProps<typeof NextThemesProvider> & { children: React.ReactNode }) {
     return <NextThemesProvider {...props}>{children}</NextThemesProvider>
 }
+
