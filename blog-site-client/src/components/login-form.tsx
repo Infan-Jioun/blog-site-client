@@ -8,9 +8,8 @@ import {
   FieldSeparator,
 } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
-import Link from "next/link"
 
-export function SignupForm({
+export function LoginForm({
   className,
   ...props
 }: React.ComponentProps<"form">) {
@@ -18,33 +17,29 @@ export function SignupForm({
     <form className={cn("flex flex-col gap-6", className)} {...props}>
       <FieldGroup>
         <div className="flex flex-col items-center gap-1 text-center">
-          <h1 className="text-2xl font-bold">Create your account</h1>
+          <h1 className="text-2xl font-bold">Login to your account</h1>
           <p className="text-muted-foreground text-sm text-balance">
-            Fill in the form below to create your account
+            Enter your email below to login to your account
           </p>
         </div>
-        <Field>
-          <FieldLabel htmlFor="name">Full Name</FieldLabel>
-          <Input id="name" type="text" placeholder="John Doe" required />
-        </Field>
         <Field>
           <FieldLabel htmlFor="email">Email</FieldLabel>
           <Input id="email" type="email" placeholder="m@example.com" required />
         </Field>
         <Field>
-          <FieldLabel htmlFor="password">Password</FieldLabel>
+          <div className="flex items-center">
+            <FieldLabel htmlFor="password">Password</FieldLabel>
+            <a
+              href="#"
+              className="ml-auto text-sm underline-offset-4 hover:underline"
+            >
+              Forgot your password?
+            </a>
+          </div>
           <Input id="password" type="password" required />
-          <FieldDescription>
-            Must be at least 8 characters long.
-          </FieldDescription>
         </Field>
         <Field>
-          <FieldLabel htmlFor="confirm-password">Confirm Password</FieldLabel>
-          <Input id="confirm-password" type="password" required />
-          <FieldDescription>Please confirm your password.</FieldDescription>
-        </Field>
-        <Field>
-          <Button type="submit">Create Account</Button>
+          <Button type="submit">Login</Button>
         </Field>
         <FieldSeparator>Or continue with</FieldSeparator>
         <Field>
@@ -55,10 +50,13 @@ export function SignupForm({
                 fill="currentColor"
               />
             </svg>
-            Sign up with GitHub
+            Login with GitHub
           </Button>
-          <FieldDescription className="px-6 text-center">
-            Already have an account? <Link href="/login">Sign in</Link>
+          <FieldDescription className="text-center">
+            Don&apos;t have an account?{" "}
+            <a href="#" className="underline underline-offset-4">
+              Sign up
+            </a>
           </FieldDescription>
         </Field>
       </FieldGroup>

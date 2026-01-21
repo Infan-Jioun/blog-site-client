@@ -29,6 +29,7 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { DarkToggle } from "@/app/components/layout/darkToggle";
+import { usePathname } from "next/navigation";
 
 interface MenuItem {
   title: string;
@@ -149,6 +150,10 @@ const Navbar = ({
   },
   className,
 }: NavbarProps) => {
+  const pathname = usePathname();
+  if (pathname?.startsWith("/register") || pathname?.startsWith("/login")) {
+    return null;
+  }
   return (
     <section className={cn("py-4", className)}>
       <div className="container px-6">
