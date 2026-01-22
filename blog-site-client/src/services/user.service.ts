@@ -11,7 +11,15 @@ export const userService = {
                 cache: "no-store"
             });
             const session = await res.json();
-            return session;
+            if (!session.data) {
+                return {
+                    data: null, error: {
+                        message:
+                            "session is missing"
+                    }
+                }
+            }
+            return { data: session, error: null }
         }
         catch (error) {
             console.error(error);
