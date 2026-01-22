@@ -11,7 +11,7 @@ export const userService = {
                 cache: "no-store"
             });
             const session = await res.json();
-            if (!session.data) {
+            if (session == null) {
                 return {
                     data: null, error: {
                         message:
