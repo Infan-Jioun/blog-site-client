@@ -4,7 +4,7 @@ export const userService = {
     getSesstion: async function () {
         try {
             const cookieStore = await cookies();
-            const res = await fetch('http://localhost:5000/get-session', {
+            const res = await fetch('http://localhost:5000/api/auth/get-session', {
                 headers: {
                     Cookie: cookieStore.toString()
                 },
