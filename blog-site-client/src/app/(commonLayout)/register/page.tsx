@@ -1,6 +1,6 @@
 import { GalleryVerticalEnd } from "lucide-react"
 
-import { SignupForm } from "@/components/signup-form"
+import { SignupForm } from "@/app/(commonLayout)/Components/modules/signup-form"
 import Image from "next/image"
 import registerImage from "@/assets/register.jpg"
 export default function SignupPage() {
