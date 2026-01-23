@@ -9,5 +9,10 @@ export const env = createEnv({
 
     },
     client: {},
-    runtimeEnv: {}
+    runtimeEnv: {
+        BACKEND_URL: process.env.BACKEND_API,
+        FRONTEND_URL: process.env.FRONTEND_API,
+        API_URL: process.env.API_URL,
+        AUTH_URL: process.env.AUTH_URL
+    }
 });
