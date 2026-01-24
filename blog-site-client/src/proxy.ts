@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
 export async function proxy(request: NextRequest) {
-    console.log("Hello from proxy", request.url);
+
     return NextResponse.next();
 }
 export const config = {
