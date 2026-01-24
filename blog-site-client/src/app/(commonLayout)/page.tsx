@@ -2,8 +2,10 @@ import HomePage from "./Home/Home";
 import { blogSerivice } from "@/services/blog.service";
 
 export default async function Home() {
-const {data} = await blogSerivice.getBlogPosts();
-console.log(data);
+
+  const res = await blogSerivice.getBlogPosts();
+  const data = await res?.data
+  console.log(data);
   return (
     <div>
       <HomePage />
