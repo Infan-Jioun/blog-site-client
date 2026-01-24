@@ -5,9 +5,14 @@ import { blogSerivice } from "@/services/blog.service";
 export default async function Home() {
 
   const res = await blogSerivice.getBlogPosts({
-    isFeatured: true,
-    search: "infan"
-  });
+    isFeatured: false,
+
+  },
+    {
+      cache : "no-store"
+    }
+
+  );
   const data = await res?.data
   console.log(data);
   return (

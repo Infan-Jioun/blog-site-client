@@ -25,8 +25,16 @@ export const blogSerivice = {
                     }
                 })
             }
+
+            const config: RequestInit = {};
+            if (options?.cache) {
+                config.cache = options.cache;
+            }
+            if (options?.revalidate) {
+                config.next = { revalidate: options.revalidate }
+            }
             console.log(url.toString());
-            const res = await fetch(url.toString());
+            const res = await fetch(url.toString(), config);
             const data = await res.json();
             return { data: data, error: null }
         } catch (error) {
