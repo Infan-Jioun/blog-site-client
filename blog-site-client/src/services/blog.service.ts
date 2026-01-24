@@ -1,10 +1,10 @@
 import { env } from "@/env";
 
-const API_URL = env.API_URL;
+
 export const blogSerivice = {
-    getBlogPostsc: async () => {
+    getBlogPosts: async () => {
         try {
-            const res = await fetch(`${API_URL}/posts`);
+            const res = await fetch(`${env.API_URL}/posts`);
             const data = await res.json();
             return {data : data , error : null}
         } catch (error) {
