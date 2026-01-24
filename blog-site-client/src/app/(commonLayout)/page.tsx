@@ -6,7 +6,7 @@ export default async function Home() {
 
   const res = await blogSerivice.getBlogPosts({
     isFeatured: true,
-    search: ""
+    search: "infan"
   });
   const data = await res?.data
   console.log(data);

@@ -3,16 +3,28 @@ import { env } from "@/env";
 //* {cache : no store}  : SSR --> Dynamic Page
 //* next : {revalidate : 10} : ISR --> Mix between static and dynamic
 
+interface ServiceOptions {
+    cache?: RequestCache;
+    revalidate?: number
+}
 interface GetBlogParams {
     isFeatured?: boolean;
     search?: string
 }
+
 export const blogSerivice = {
-    getBlogPosts: async (params?: GetBlogParams) => {
+    getBlogPosts: async (params?: GetBlogParams, options?: ServiceOptions) => {
 
         try {
             const url = new URL(`${env.API_URL}/posts`)
             url.searchParams.append("key", "Value")
+            if (params) {
+                Object.entries(params).forEach(([key, value]) => {
+                    if (value != undefined && value != null && value != "") {
+                        url.searchParams.append(key, value)
+                    }
+                })
+            }
             console.log(url.toString());
             const res = await fetch(url.toString());
             const data = await res.json();
