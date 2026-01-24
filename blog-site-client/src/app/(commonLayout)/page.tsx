@@ -4,7 +4,10 @@ import { blogSerivice } from "@/services/blog.service";
 
 export default async function Home() {
 
-  const res = await blogSerivice.getBlogPosts();
+  const res = await blogSerivice.getBlogPosts({
+    isFeatured: true,
+    search: ""
+  });
   const data = await res?.data
   console.log(data);
   return (
