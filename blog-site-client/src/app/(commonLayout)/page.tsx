@@ -9,7 +9,7 @@ export default async function Home() {
 
   },
     {
-      cache : "no-store"
+      cache: "no-store"
     }
 
   );
