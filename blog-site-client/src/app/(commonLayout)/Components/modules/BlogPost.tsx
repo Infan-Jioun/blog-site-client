@@ -15,7 +15,7 @@ import { BlogPost } from "@/types";
 
 export default function BlogCard({ post }: { post: BlogPost }) {
   return (
-    <Card className="h-full overflow-hidden border-none shadow-md transition-all duration-300 pb-2">
+    <Card className="h-full overflow-hidden border shadow-md transition-all duration-300 pb-2">
       <div className="relative h-56 w-full overflow-hidden">
         {post.thumbnail ? (
           <Image
