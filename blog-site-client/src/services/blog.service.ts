@@ -7,7 +7,7 @@ interface ServiceOptions {
     cache?: RequestCache;
     revalidate?: number
 }
-interface GetBlogParams {
+export interface GetBlogParams {
     isFeatured?: boolean;
     search?: string
 }
@@ -41,7 +41,7 @@ export const blogSerivice = {
             console.error(error);
         }
     },
-    getBlogById: async (id: string) => {
+    getBlogById: async function (id: string) {
         try {
             const res = await fetch(`${env.API_URL}/posts/${id}`)
             const data = await res.json();
