@@ -1,3 +1,4 @@
+"use server"
 import { blogSerivice } from "@/services/blog.service"
 
 

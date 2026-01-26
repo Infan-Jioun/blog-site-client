@@ -8,14 +8,12 @@ export default function AboutPage() {
   useEffect(() => {
     //* IIFE Function
     (async () => {
-      const result = await getBlogs();
-      if (result?.data) {
-        setData(data)
-      }
-    })()
+      const res = await getBlogs();
+      setData(res?.data)
+    })();
   }, [data])
 
   return (
-    <div>This is AboutPage</div>
+    <div>This is AboutPage...</div>
   )
 }
