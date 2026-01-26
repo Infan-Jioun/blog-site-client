@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import {
   Field,
   FieldDescription,
+  FieldError,
   FieldGroup,
   FieldLabel,
   FieldSeparator,
@@ -12,6 +13,7 @@ import { Input } from "@/components/ui/input"
 import Link from "next/link"
 import { useForm } from "@tanstack/react-form";
 import * as Z from "zod";
+import { authClient } from "@/lib/auth-client"
 const formSchema = Z.object({
   name: Z.string().min(2, "This is field is required"),
   email: Z.string().min(4, "This is field is required"),
@@ -31,8 +33,12 @@ export function SignupForm({
       onSubmit: formSchema
     },
     onSubmit: async ({ value }) => {
-
-
+      try {
+        const { data, error } = await authClient.signUp.email(value)
+      }
+      catch (error) {
+        console.error(error)
+      }
       console.log(value)
     },
   })
@@ -49,42 +55,52 @@ export function SignupForm({
       </div>
       <FieldGroup>
         <form.Field name="name" children={(field) => {
+          const isInvalid =
+            field.state.meta.isTouched && !field.state.meta.isValid
           return (
-            <>
-              <Field>
-                <FieldLabel htmlFor={field.name}>Full Name</FieldLabel>
-                <Input id={field.name} name={field.name} type="text" placeholder="John Doe" value={field.state.value}
-                  onChange={(e) => field.handleChange(e.target.value)}
-                  required />
-              </Field>
-              <Field></Field>
-            </>
+
+            <Field data-invalid={isInvalid}>
+              <FieldLabel htmlFor={field.name}>Full Name</FieldLabel>
+              <Input id={field.name} name={field.name} type="text" placeholder="John Doe" value={field.state.value}
+                onChange={(e) => field.handleChange(e.target.value)}
+              />
+
+              {isInvalid && <FieldError className="text-red-500" errors={field.state.meta.errors} />}
+            </Field>
+
+
+
           )
         }} />
         <form.Field name="email" children={(field) => {
+          const isInvalid =
+            field.state.meta.isTouched && !field.state.meta.isValid
           return (
-            <>
-              <Field>
-                <FieldLabel htmlFor={field.name}>Your Email</FieldLabel>
-                <Input id={field.name} name={field.name} type="text" placeholder="Enter Your email" value={field.state.value}
-                  onChange={(e) => field.handleChange(e.target.value)}
-                  required />
-              </Field>
-              <Field></Field>
-            </>
+
+            <Field>
+              <FieldLabel htmlFor={field.name}>Your Email</FieldLabel>
+              <Input id={field.name} name={field.name} type="text" placeholder="Enter Your email" value={field.state.value}
+                onChange={(e) => field.handleChange(e.target.value)}
+              />
+              {isInvalid && <FieldError className="text-red-500" errors={field.state.meta.errors} />}
+            </Field>
+
+
           )
         }} />
         <form.Field name="password" children={(field) => {
+          const isInvalid =
+            field.state.meta.isTouched && !field.state.meta.isValid
           return (
-            <>
-              <Field>
-                <FieldLabel htmlFor={field.name}>Password</FieldLabel>
-                <Input id={field.name} name={field.name} type="password" placeholder="password" value={field.state.value}
-                  onChange={(e) => field.handleChange(e.target.value)}
-                  required />
-              </Field>
-              <Field></Field>
-            </>
+
+            <Field>
+              <FieldLabel htmlFor={field.name}>Password</FieldLabel>
+              <Input id={field.name} name={field.name} type="password" placeholder="password" value={field.state.value}
+                onChange={(e) => field.handleChange(e.target.value)}
+              />
+              {isInvalid && <FieldError className="text-red-500" errors={field.state.meta.errors} />}
+            </Field>
+
           )
         }} />
 
