@@ -10,7 +10,13 @@ import {
 } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
 import Link from "next/link"
-import { useForm } from "@tanstack/react-form"
+import { useForm } from "@tanstack/react-form";
+import * as Z from "zod";
+const formSchema = Z.object({
+  name: Z.string().min(2, "This is field is required"),
+  email: Z.string().min(4, "This is field is required"),
+  password: Z.string().min(8, "This is field is required")
+})
 export function SignupForm({
   className,
   ...props
