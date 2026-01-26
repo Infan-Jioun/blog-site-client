@@ -14,6 +14,7 @@ import Link from "next/link"
 import { useForm } from "@tanstack/react-form";
 import * as Z from "zod";
 import { authClient } from "@/lib/auth-client"
+import { toast } from "sonner"
 const formSchema = Z.object({
   name: Z.string().min(2, "This is field is required"),
   email: Z.string().min(4, "This is field is required"),
@@ -33,11 +34,20 @@ export function SignupForm({
       onSubmit: formSchema
     },
     onSubmit: async ({ value }) => {
+      const taostId = await toast.loading("Creating User")
       try {
-        const { data, error } = await authClient.signUp.email(value)
+        const { data, error } = await authClient.signUp.email(value);
+        if (error) {
+          toast.error(error.message, { id: taostId })
+          return;
+        }
+        else {
+          toast.success("Successfully user created", { id: taostId })
+        }
       }
+
       catch (error) {
-        console.error(error)
+        toast.error("Something error", { id: taostId })
       }
       console.log(value)
     },
