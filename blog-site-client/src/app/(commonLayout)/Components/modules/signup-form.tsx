@@ -27,6 +27,9 @@ export function SignupForm({
       email: "",
       password: ""
     },
+    validators: {
+      onSubmit: formSchema
+    },
     onSubmit: async ({ value }) => {
 
 
