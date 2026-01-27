@@ -42,7 +42,7 @@ export default function DashboardLayout({ admin, user }: { children: React.React
                         </BreadcrumbList>
                     </Breadcrumb>
                 </header>
-                <div>
+                <div className="flex flex-1 flex-col gap-4 p-4">
                     {userInfo.role === "admin" ? admin : user}
                 </div>
             </SidebarInset>
