@@ -14,7 +14,10 @@ import {
     SidebarTrigger,
 } from "../(dashboardLayout)/components/ui/sidebar"
 
-export default function DashboardLayout({ children }: { children: React.ReactNode }) {
+export default function DashboardLayout({ admin, user }: { children: React.ReactNode, admin: React.ReactNode, user: React.ReactNode }) {
+    const userInfo = {
+        role: "admin"
+    }
     return (
         <SidebarProvider>
             <AppSidebar />
