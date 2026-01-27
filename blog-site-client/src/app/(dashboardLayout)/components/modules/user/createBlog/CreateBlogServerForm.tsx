@@ -11,6 +11,7 @@ import { Field, FieldGroup, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { env } from "@/env";
+import { cookies } from "next/headers";
 
 const API_URL = env.API_URL;
 
@@ -28,7 +29,15 @@ export default function CreateBlogServerForm() {
                 .map((item) => item.trim())
                 .filter((item) => item === "")
         }
-     
+        const cookieStore = await cookies();
+        const res = await fetch(`${API_URL}/posts`, {
+            method: "POST",
+            headers: {
+                "Content-type": "application/json",
+                Cookie: cookieStore.toString()
+            },
+            body: JSON.stringify(blogData)
+        })
     };
 
 
