@@ -20,7 +20,7 @@ export default function DashboardLayout({ admin, user }: { children: React.React
     }
     return (
         <SidebarProvider>
-            <AppSidebar />
+            <AppSidebar user={userInfo} />
             <SidebarInset>
                 <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4">
                     <SidebarTrigger className="-ml-1" />
@@ -42,9 +42,9 @@ export default function DashboardLayout({ admin, user }: { children: React.React
                         </BreadcrumbList>
                     </Breadcrumb>
                 </header>
-                {
-                    children
-                }
+                <div>
+                    {userInfo.role === "admin" ? admin : user}
+                </div>
             </SidebarInset>
         </SidebarProvider>
     )
