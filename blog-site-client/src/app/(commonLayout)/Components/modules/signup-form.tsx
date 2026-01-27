@@ -47,7 +47,7 @@ export function SignupForm({
       }
 
       catch (error) {
-        toast.error("Something error", { id: taostId })
+        toast.error("Something error" , {id : taostId} )
       }
       console.log(value)
     },
