@@ -23,9 +23,12 @@ export default function CreateBlogServerForm() {
         const blogData = {
             title,
             content,
-            tags
+            tags: tags
+                .split(",")
+                .map((item) => item.trim())
+                .filter((item) => item === "")
         }
-        console.log(JSON.stringify(blogData));
+     
     };
 
 
