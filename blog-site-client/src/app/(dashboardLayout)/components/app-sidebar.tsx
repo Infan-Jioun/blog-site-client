@@ -39,7 +39,9 @@ const data = {
   ],
 }
 
-export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+export function AppSidebar({ user, ...props }:
+  { user: { role: string } & React.ComponentProps<typeof Sidebar> }) {
+
   return (
     <Sidebar {...props}>
       <SidebarHeader>
