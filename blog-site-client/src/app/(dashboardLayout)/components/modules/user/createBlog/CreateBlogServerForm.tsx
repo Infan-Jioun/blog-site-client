@@ -14,10 +14,14 @@ import { env } from "@/env";
 
 const API_URL = env.API_URL;
 
-export default function CreateBlogFormServer() {
+export default function CreateBlogServerForm() {
     const createBlog = async (formData: FormData) => {
         "use server";
+        const title = formData.get("title") as string;
+        const content = formData.get("content") as string;
+        const tags = formData.get("tags") as string;
     };
+
 
     return (
         <Card className="max-w-2xl mx-auto">
