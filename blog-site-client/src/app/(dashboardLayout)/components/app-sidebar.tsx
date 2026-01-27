@@ -18,38 +18,16 @@ import { Route } from "@/types"
 import { adminRoutes } from "@/app/routes/adminRoutes/page"
 import { userRoutes } from "@/app/routes/userRoutes/page"
 import Link from "next/link"
+import { Roles } from "@/constant/roles"
 
-// This is sample data.
-const data = {
-
-  navMain: [
-    {
-      title: "Getting Started",
-      url: "#",
-      items: [
-        {
-          title: "Write Blog Posts",
-          url: "/dashboard/write-blog",
-          isActive: false,
-        },
-        {
-          title: "Analytics",
-          url: "/dashboard/analytics",
-          isActive: false,
-        },
-      ],
-    },
-
-  ],
-}
 
 export function AppSidebar({ user, ...props }:
   { user: { role: string } & React.ComponentProps<typeof Sidebar> }) {
   let routes: Route[] = [];
   switch (user.role) {
-    case "admin": routes = adminRoutes;
+    case Roles.admin: routes = adminRoutes;
       break;
-    case "user": routes = userRoutes;
+    case Roles.user: routes = userRoutes;
       break;
     default: routes = [];
       break;

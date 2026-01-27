@@ -14,11 +14,15 @@ import {
     SidebarProvider,
     SidebarTrigger,
 } from "../(dashboardLayout)/components/ui/sidebar"
+import { userService } from "@/services/user.service"
 
-export default function DashboardLayout({ admin, user }: { children: React.ReactNode, admin: React.ReactNode, user: React.ReactNode }) {
-    const userInfo = {
-        role: Roles.admin
-    }
+export default async function DashboardLayout({ admin, user }: { children: React.ReactNode, admin: React.ReactNode, user: React.ReactNode }) {
+
+    const res = await userService.getSesstion()
+    const users = res?.data
+    console.log(" ", users);
+    const userInfo = users.user
+
     return (
         <SidebarProvider>
             <AppSidebar user={userInfo} />
