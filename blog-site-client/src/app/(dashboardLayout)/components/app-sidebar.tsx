@@ -14,6 +14,8 @@ import {
   SidebarMenuItem,
   SidebarRail,
 } from "@/app/(dashboardLayout)/components/ui/sidebar"
+import { Route } from "@/types"
+import { adminRoutes } from "@/app/routes/adminRoutes/page"
 
 // This is sample data.
 const data = {
@@ -41,7 +43,11 @@ const data = {
 
 export function AppSidebar({ user, ...props }:
   { user: { role: string } & React.ComponentProps<typeof Sidebar> }) {
-
+  let routes: Route[] = [];
+  switch (user.role) {
+    case "admin": routes = adminRoutes;
+      break;
+  }
   return (
     <Sidebar {...props}>
       <SidebarHeader>
