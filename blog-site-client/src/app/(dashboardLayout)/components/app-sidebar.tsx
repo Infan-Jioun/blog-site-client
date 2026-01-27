@@ -16,6 +16,7 @@ import {
 } from "@/app/(dashboardLayout)/components/ui/sidebar"
 import { Route } from "@/types"
 import { adminRoutes } from "@/app/routes/adminRoutes/page"
+import { userRoutes } from "@/app/routes/userRoutes/page"
 
 // This is sample data.
 const data = {
@@ -46,6 +47,10 @@ export function AppSidebar({ user, ...props }:
   let routes: Route[] = [];
   switch (user.role) {
     case "admin": routes = adminRoutes;
+      break;
+    case "user": routes = userRoutes;
+      break;
+    default: routes = [];
       break;
   }
   return (
