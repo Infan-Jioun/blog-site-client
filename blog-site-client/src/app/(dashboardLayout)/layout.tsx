@@ -1,3 +1,4 @@
+import { Roles } from "@/constant/roles"
 import { AppSidebar } from "../(dashboardLayout)/components/app-sidebar"
 import {
     Breadcrumb,
@@ -16,7 +17,7 @@ import {
 
 export default function DashboardLayout({ admin, user }: { children: React.ReactNode, admin: React.ReactNode, user: React.ReactNode }) {
     const userInfo = {
-        role: "admin"
+        role: Roles.admin
     }
     return (
         <SidebarProvider>
@@ -43,7 +44,7 @@ export default function DashboardLayout({ admin, user }: { children: React.React
                     </Breadcrumb>
                 </header>
                 <div className="flex flex-1 flex-col gap-4 p-4">
-                    {userInfo.role === "admin" ? admin : user}
+                    {userInfo.role === Roles.admin ? admin : user}
                 </div>
             </SidebarInset>
         </SidebarProvider>
