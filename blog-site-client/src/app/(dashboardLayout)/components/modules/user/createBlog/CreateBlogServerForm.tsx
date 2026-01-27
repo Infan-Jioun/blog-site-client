@@ -20,6 +20,12 @@ export default function CreateBlogServerForm() {
         const title = formData.get("title") as string;
         const content = formData.get("content") as string;
         const tags = formData.get("tags") as string;
+        const blogData = {
+            title,
+            content,
+            tags
+        }
+        console.log(JSON.stringify(blogData));
     };
 
 
