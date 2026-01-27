@@ -17,6 +17,7 @@ import {
 import { Route } from "@/types"
 import { adminRoutes } from "@/app/routes/adminRoutes/page"
 import { userRoutes } from "@/app/routes/userRoutes/page"
+import Link from "next/link"
 
 // This is sample data.
 const data = {
@@ -61,15 +62,15 @@ export function AppSidebar({ user, ...props }:
       </SidebarHeader>
       <SidebarContent>
         {/* We create a SidebarGroup for each parent. */}
-        {data.navMain.map((item) => (
+        {routes.map((item) => (
           <SidebarGroup key={item.title}>
             <SidebarGroupLabel>{item.title}</SidebarGroupLabel>
             <SidebarGroupContent>
               <SidebarMenu>
                 {item.items.map((item) => (
                   <SidebarMenuItem key={item.title}>
-                    <SidebarMenuButton asChild isActive={item.isActive}>
-                      <a href={item.url}>{item.title}</a>
+                    <SidebarMenuButton asChild>
+                      <Link href={item.url}>{item.title}</Link>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
                 ))}
